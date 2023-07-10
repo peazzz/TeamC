@@ -8,13 +8,16 @@ public class PlayerDefense : MonoBehaviour
     public GameObject Shield1;
     public GameObject Shield2;
     public GameObject Shield3;
-    private int SpaceTime;
+    public static int SpaceTime;
     public static float CD;
     private bool canDefense;
     public SpriteRenderer SR;
-    private float _Red_G;
-    private float _Red_B;
-    private Color _Red;
+    private float _Blue_R;
+    private float _Blue_G;
+    private Color _Blue;
+
+    public Text Combo_Text;
+    public static float Combo;
 
     public Slider PlayerHP;
 
@@ -31,10 +34,12 @@ public class PlayerDefense : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _Red_G = 1-(CD/1.2f);
-        _Red_B = 1-(CD/1.2f);
-        _Red = new Color(1, _Red_G, _Red_B, 1);
-        SR.color = _Red;
+        Combo_Text.text = Combo.ToString() + " Guard";
+
+        _Blue_R = 1-(CD/1.2f);
+        _Blue_G = 1-(CD/1.2f);
+        _Blue = new Color(_Blue_R, _Blue_G, 1, 1);
+        SR.color = _Blue;
 
         if (CD <= 0)
         {
@@ -87,6 +92,11 @@ public class PlayerDefense : MonoBehaviour
         else if (other.gameObject.tag == "Bullet3" || other.gameObject.tag == "Bullet3_Last")
         {
             PlayerHP.value -= 0.15f;
+        }
+
+        if (other.gameObject.tag == "Bullet1_Last" || other.gameObject.tag == "Bullet2_Last" || other.gameObject.tag == "Bullet3_Last")
+        {
+            BossAttack.BulletCount = 0;
         }
     }
 }
