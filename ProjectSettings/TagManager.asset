@@ -11,6 +11,9 @@ TagManager:
   - Bullet1_Last
   - Bullet2_Last
   - Bullet3_Last
+  - Shield1
+  - Shield2
+  - Shield3
   layers:
   - Default
   - TransparentFX

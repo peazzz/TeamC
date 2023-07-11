@@ -33,21 +33,21 @@ public class Shield : MonoBehaviour
         {
             if (Shield1)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 0.2f;
                 ChargeBar.value += 0.02f * (1 + (PlayerDefense.Combo/20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield2)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield3)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
@@ -57,14 +57,14 @@ public class Shield : MonoBehaviour
         {
             if (Shield2)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield3)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
@@ -83,7 +83,7 @@ public class Shield : MonoBehaviour
         {
             if (Shield3)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
@@ -102,21 +102,21 @@ public class Shield : MonoBehaviour
         {
             if (Shield1)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 0.2f;
                 ChargeBar.value += 0.02f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield2)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield3)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
@@ -127,14 +127,14 @@ public class Shield : MonoBehaviour
         {
             if (Shield2)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield3)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
@@ -154,7 +154,7 @@ public class Shield : MonoBehaviour
         {
             if (Shield3)
             {
-                Destroy(other.gameObject);
+                // Destroy(other.gameObject);
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
