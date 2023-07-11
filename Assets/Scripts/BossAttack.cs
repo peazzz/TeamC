@@ -85,7 +85,7 @@ public class BossAttack : MonoBehaviour
                 {
                     Instantiate(bullet1_Last, transform.position, transform.rotation);
                 }
-                interval = 0.7f;
+                interval = 1.2f;
                 BulletCount++;
             }
             else if (RandomBullet == 2)
@@ -111,7 +111,7 @@ public class BossAttack : MonoBehaviour
                 {
                     Instantiate(bullet3_Last, transform.position, transform.rotation);
                 }
-                interval = 1.7f;
+                interval = 1.2f;
                 BulletCount++;
             }
         }

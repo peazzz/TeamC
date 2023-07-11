@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -23,15 +24,28 @@ public class GameManager : MonoBehaviour
     private float menuTime;
     public GameObject MenuScene;
     public GameObject MenuStart;
+
+    private Color _Black;
+    public Image EndScene;
+    public GameObject _TobeContinue;
+    private float EndTime;
+    public GameObject PlayerModel;
+    public GameObject Fire1;
+    public GameObject Fire2;
     // Start is called before the first frame update
     void Start()
     {
-        
+        _Black = new Color(0, 0, 0, 1);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         if (Input.GetKeyDown(KeyCode.Space) && !menu)
         {
             _MenuStart();
@@ -47,6 +61,7 @@ public class GameManager : MonoBehaviour
         }
 
         _Start();
+        _End();
 
         if (Starting && !Anim_next)
         {
@@ -123,5 +138,21 @@ public class GameManager : MonoBehaviour
         StartScene.SetActive(false);
         Traning_Text.SetActive(false);
         Hint_Text.SetActive(false);
+    }
+
+    void _End()
+    {
+        if (Shield.Defence3)
+        {
+            EndScene.color = Color.Lerp(EndScene.color, _Black, 0.05f);
+            EndTime += Time.deltaTime;
+            if (EndTime > 1)
+            {
+                _TobeContinue.SetActive(true);
+                PlayerModel.SetActive(true);
+                Fire1.SetActive(false);
+                Fire2.SetActive(false);
+            }
+        }
     }
 }

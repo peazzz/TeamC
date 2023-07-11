@@ -38,11 +38,11 @@ public class Shield : MonoBehaviour
             if (Shield1)
             {               
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 0.2f;
                 ChargeBar.value += 0.02f * (1 + (PlayerDefense.Combo/20));
                 PlayerDefense.Combo += 1;
                 if (GameManager.Tutorial1 && !GameManager.Tutorial2)
                 {
+                    _Shield1.SetActive(false);
                     PlayerDefense.SpaceTime = 0;
                     GameManager.Tutorial2 = true;
                     Defence1 = true;
@@ -51,18 +51,16 @@ public class Shield : MonoBehaviour
             else if (Shield2)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
-                
+                _Shield2.SetActive(false);
             }
             else if (Shield3)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
-                
+                _Shield3.SetActive(false);
             }
         }
         else if (other.gameObject.tag == "Bullet2")
@@ -70,7 +68,6 @@ public class Shield : MonoBehaviour
             if (Shield2)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
                 if (GameManager.Tutorial2 && !GameManager.Tutorial3)
@@ -78,14 +75,15 @@ public class Shield : MonoBehaviour
                     PlayerDefense.SpaceTime = 0;
                     GameManager.Tutorial3 = true;
                     Defence2 = true;
+                    _Shield2.SetActive(false);
                 }
             }
             else if (Shield3)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
+                _Shield3.SetActive(false);
             }
             else if (Shield1)
             {
@@ -95,6 +93,7 @@ public class Shield : MonoBehaviour
                 _Shield3.SetActive(false);
                 Instantiate(ShieldBroken, transform.position, transform.rotation);
                 PlayerDefense.Combo = 0;
+                _Shield1.SetActive(false);
             }
         }
         else if (other.gameObject.tag == "Bullet3")
@@ -102,13 +101,13 @@ public class Shield : MonoBehaviour
             if (Shield3)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
                 if (GameManager.Tutorial3 && !GameManager.Tutorial_Finish)
                 {
                     PlayerDefense.SpaceTime = 0;
                     Defence3 = true;
+                    _Shield3.SetActive(false);
                 }
             }
             else if(Shield1 || Shield2)
@@ -119,6 +118,8 @@ public class Shield : MonoBehaviour
                 _Shield3.SetActive(false);
                 Instantiate(ShieldBroken, transform.position, transform.rotation);
                 PlayerDefense.Combo = 0;
+                _Shield1.SetActive(false);
+                _Shield2.SetActive(false);
             }
         }
         else if (other.gameObject.tag == "Bullet1_Last")
@@ -126,21 +127,18 @@ public class Shield : MonoBehaviour
             if (Shield1)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 0.2f;
                 ChargeBar.value += 0.02f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield2)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield3)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
@@ -151,14 +149,12 @@ public class Shield : MonoBehaviour
             if (Shield2)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
             else if (Shield3)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
@@ -178,7 +174,6 @@ public class Shield : MonoBehaviour
             if (Shield3)
             {
                 Destroy(other.gameObject);
-                PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
             }
