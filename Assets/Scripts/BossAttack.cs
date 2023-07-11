@@ -15,6 +15,11 @@ public class BossAttack : MonoBehaviour
     private bool isAttack;
     public static int BulletCount;
 
+    //±Ð¾Ç
+    private bool T1_bullet;
+    private bool T2_bullet;
+    private bool T3_bullet;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,15 +29,42 @@ public class BossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (BulletCount < 3)
+        if (GameManager.Starting && GameManager.Tutorial_Finish)
         {
-            _Attack();
-            isAttack = true;
+            if (BulletCount < 3)
+            {
+                _Attack();
+                isAttack = true;
+            }
+            else
+            {
+                isAttack = false;
+                interval = 0;
+            }
         }
-        else
+        else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T1_bullet)
         {
-            isAttack = false;
-            interval = 0;
+            if (GameManager.Tutorial1 && !T1_bullet)
+            {
+                Instantiate(bullet1, transform.position, transform.rotation);
+                T1_bullet = true;
+            }
+        }
+        else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T2_bullet)
+        {
+            if (GameManager.Tutorial2 && !T2_bullet)
+            {
+                Instantiate(bullet2, transform.position, transform.rotation);
+                T2_bullet = true;
+            }
+        }
+        else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T3_bullet)
+        {
+            if (GameManager.Tutorial3 && !T3_bullet)
+            {
+                Instantiate(bullet3, transform.position, transform.rotation);
+                T3_bullet = true;
+            }
         }
     }
 

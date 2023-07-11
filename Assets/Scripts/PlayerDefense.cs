@@ -21,6 +21,8 @@ public class PlayerDefense : MonoBehaviour
 
     public Slider PlayerHP;
 
+    private bool Lock;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,9 +59,13 @@ public class PlayerDefense : MonoBehaviour
             Shield3.SetActive(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDefense)
+        if (Input.GetKeyDown(KeyCode.Space) && canDefense && GameManager.Starting && GameManager.Tutorial_Finish)
         {
             SpaceTime++;
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && canDefense && GameManager.Starting && !GameManager.Tutorial_Finish)
+        {
+            
         }
 
         if (SpaceTime == 1)
