@@ -9,10 +9,10 @@ public class GameManager : MonoBehaviour
     public static bool Tutorial2;
     public static bool Tutorial3;
     public static bool Tutorial_Finish;
-    public GameObject StartButton;
     public GameObject StartScene;
+    public GameObject Traning_Text;
+    public GameObject Hint_Text;
     public GameObject Tutorial1_Text;
-    public GameObject Tutorial1_Text_O;
     public Animator anim;
     private float AnimTime;
     private bool Anim_start;
@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        _Start();
+
         if (Starting && !Anim_next)
         {
             AnimTime += Time.deltaTime;
@@ -40,7 +42,6 @@ public class GameManager : MonoBehaviour
                 anim.SetTrigger("next");
                 Anim_next = true;
                 Tutorial1_Text.SetActive(true);
-                Tutorial1_Text_O.SetActive(true);
             }
         }
 
@@ -50,15 +51,22 @@ public class GameManager : MonoBehaviour
             {
                 Tutorial1 = true;
                 Tutorial1_Text.SetActive(false);
-                Tutorial1_Text_O.SetActive(false);
             }
         }
     }
 
     public void _Start()
     {
-        Starting = true;
-        StartButton.SetActive(false);
+        if (Input.GetKeyDown(KeyCode.Space) && !Starting)
+        {
+            Starting = true;
+        }
+    }
+
+    public void StartAnim()
+    {
         StartScene.SetActive(false);
+        Traning_Text.SetActive(false);
+        Hint_Text.SetActive(false);
     }
 }
