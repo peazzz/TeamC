@@ -63,9 +63,26 @@ public class PlayerDefense : MonoBehaviour
         {
             SpaceTime++;
         }
-        else if (Input.GetKeyDown(KeyCode.Space) && canDefense && GameManager.Starting && !GameManager.Tutorial_Finish && !GameManager.Tutorial1)
+        else if (Input.GetKeyDown(KeyCode.Space) && canDefense && GameManager.Starting && !GameManager.Tutorial_Finish && GameManager.Tutorial1 && !GameManager.Tutorial2)
         {
-            SpaceTime = 1;
+            if (SpaceTime < 1)
+            {
+                SpaceTime ++;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && canDefense && GameManager.Starting && !GameManager.Tutorial_Finish && GameManager.Tutorial2 && !GameManager.Tutorial3)
+        {
+            if (SpaceTime < 2)
+            {
+                SpaceTime++;
+            }
+        }
+        else if (Input.GetKeyDown(KeyCode.Space) && canDefense && GameManager.Starting && !GameManager.Tutorial_Finish && GameManager.Tutorial3)
+        {
+            if (SpaceTime < 3)
+            {
+                SpaceTime++;
+            }
         }
 
         if (SpaceTime == 1)

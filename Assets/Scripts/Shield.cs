@@ -13,7 +13,11 @@ public class Shield : MonoBehaviour
     public GameObject _Shield1;
     public GameObject _Shield2;
     public GameObject _Shield3;
-    
+
+    public static bool Defence1;
+    public static bool Defence2;
+    public static bool Defence3;
+
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +36,17 @@ public class Shield : MonoBehaviour
         if (other.gameObject.tag == "Bullet1")
         {
             if (Shield1)
-            {
+            {               
                 Destroy(other.gameObject);
                 PlayerDefense.CD = 0.2f;
                 ChargeBar.value += 0.02f * (1 + (PlayerDefense.Combo/20));
                 PlayerDefense.Combo += 1;
+                if (GameManager.Tutorial1 && !GameManager.Tutorial2)
+                {
+                    PlayerDefense.SpaceTime = 0;
+                    GameManager.Tutorial2 = true;
+                    Defence1 = true;
+                }
             }
             else if (Shield2)
             {
@@ -44,6 +54,7 @@ public class Shield : MonoBehaviour
                 PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
+                
             }
             else if (Shield3)
             {
@@ -51,6 +62,7 @@ public class Shield : MonoBehaviour
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
+                
             }
         }
         else if (other.gameObject.tag == "Bullet2")
@@ -61,6 +73,12 @@ public class Shield : MonoBehaviour
                 PlayerDefense.CD = 0.7f;
                 ChargeBar.value += 0.03f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
+                if (GameManager.Tutorial2 && !GameManager.Tutorial3)
+                {
+                    PlayerDefense.SpaceTime = 0;
+                    GameManager.Tutorial3 = true;
+                    Defence2 = true;
+                }
             }
             else if (Shield3)
             {
@@ -87,6 +105,11 @@ public class Shield : MonoBehaviour
                 PlayerDefense.CD = 1.2f;
                 ChargeBar.value += 0.05f * (1 + (PlayerDefense.Combo / 20));
                 PlayerDefense.Combo += 1;
+                if (GameManager.Tutorial3 && !GameManager.Tutorial_Finish)
+                {
+                    PlayerDefense.SpaceTime = 0;
+                    Defence3 = true;
+                }
             }
             else if(Shield1 || Shield2)
             {

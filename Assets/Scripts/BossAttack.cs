@@ -52,7 +52,7 @@ public class BossAttack : MonoBehaviour
         }
         else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T2_bullet)
         {
-            if (GameManager.Tutorial2 && !T2_bullet)
+            if (GameManager.Tutorial2 && !T2_bullet && PlayerDefense.SpaceTime == 2)
             {
                 Instantiate(bullet2, transform.position, transform.rotation);
                 T2_bullet = true;
@@ -60,7 +60,7 @@ public class BossAttack : MonoBehaviour
         }
         else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T3_bullet)
         {
-            if (GameManager.Tutorial3 && !T3_bullet)
+            if (GameManager.Tutorial3 && !T3_bullet && PlayerDefense.SpaceTime == 3)
             {
                 Instantiate(bullet3, transform.position, transform.rotation);
                 T3_bullet = true;
