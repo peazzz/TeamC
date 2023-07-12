@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public static bool Tutorial2;
     public static bool Tutorial3;
     public static bool Tutorial_Finish;
+    public static bool Win;
     public GameObject StartScene;
     public GameObject Traning_Text;
     public GameObject Hint_Text;
@@ -24,18 +25,17 @@ public class GameManager : MonoBehaviour
     private float menuTime;
     public GameObject MenuScene;
     public GameObject MenuStart;
+    public GameObject Menu_Logo;
+    public GameObject Fight_object;
+    public GameObject _audio;
 
     private Color _Black;
-    public Image EndScene;
-    public GameObject _TobeContinue;
-    private float EndTime;
-    public GameObject PlayerModel;
-    public GameObject Fire1;
-    public GameObject Fire2;
+    
     // Start is called before the first frame update
     void Start()
     {
         _Black = new Color(0, 0, 0, 1);
+        //Tutorial_Finish = true;
     }
 
     // Update is called once per frame
@@ -61,9 +61,8 @@ public class GameManager : MonoBehaviour
         }
 
         _Start();
-        _End();
 
-        if (Starting && !Anim_next)
+        if (Starting && !Anim_next && !Tutorial_Finish)
         {
             AnimTime += Time.deltaTime;
             if (!Anim_start)
@@ -80,7 +79,7 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        if (Anim_next)//教學開始
+        if (Anim_next && !Tutorial_Finish)//教學開始
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -116,6 +115,18 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        if (Shield.Defence3 && !Tutorial_Finish)
+        {
+            anim.SetTrigger("gamestart");
+            Tutorial_Finish = true;
+            Fight_object.SetActive(true);
+        }
+    }
+
+    public void _Audio()
+    {
+        Instantiate(_audio, transform.position, transform.rotation);
     }
 
     public void _MenuStart()
@@ -123,6 +134,22 @@ public class GameManager : MonoBehaviour
         menu = true;
         MenuScene.SetActive(false);
         MenuStart.SetActive(false);
+        Menu_Logo.SetActive(false);
+    }
+
+    public void reStart()
+    {
+        Starting = false;
+        Tutorial1 = false;
+        Tutorial2 = false;
+        Tutorial3 = false;
+        Tutorial_Finish = false;
+        Win = false;
+        Shield.Defence1 = false;
+        Shield.Defence2 = false;
+        Shield.Defence3 = false;
+        Shield.Error = false;
+        Shield.ready = false;
     }
 
     public void _Start()
@@ -138,21 +165,5 @@ public class GameManager : MonoBehaviour
         StartScene.SetActive(false);
         Traning_Text.SetActive(false);
         Hint_Text.SetActive(false);
-    }
-
-    void _End()
-    {
-        if (Shield.Defence3)
-        {
-            EndScene.color = Color.Lerp(EndScene.color, _Black, 0.05f);
-            EndTime += Time.deltaTime;
-            if (EndTime > 1)
-            {
-                _TobeContinue.SetActive(true);
-                PlayerModel.SetActive(true);
-                Fire1.SetActive(false);
-                Fire2.SetActive(false);
-            }
-        }
     }
 }

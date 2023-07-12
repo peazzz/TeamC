@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: 5a6e3bf1eabcbaa4f937c68affb00ff2
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - GenYoMin TW
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 758d7d7164b971f4ab52cd222479371e, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

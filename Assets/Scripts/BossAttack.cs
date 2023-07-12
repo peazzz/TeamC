@@ -14,6 +14,9 @@ public class BossAttack : MonoBehaviour
     private float interval;
     private bool isAttack;
     public static int BulletCount;
+    public GameObject Spell1_audio;
+    public GameObject Spell2_audio;
+    public GameObject Spell3_audio;
 
     //±Ð¾Ç
     private bool T1_bullet;
@@ -29,41 +32,47 @@ public class BossAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameManager.Starting && GameManager.Tutorial_Finish)
+        if (!GameManager.Win)
         {
-            if (BulletCount < 3)
+            if (GameManager.Starting && GameManager.Tutorial_Finish)
             {
-                _Attack();
-                isAttack = true;
+                if (BulletCount < 3)
+                {
+                    _Attack();
+                    isAttack = true;
+                }
+                else
+                {
+                    isAttack = false;
+                    interval = 0;
+                }
             }
-            else
+            else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T1_bullet)
             {
-                isAttack = false;
-                interval = 0;
+                if (GameManager.Tutorial1 && !T1_bullet)
+                {
+                    Instantiate(Spell1_audio, transform.position, transform.rotation);
+                    Instantiate(bullet1, transform.position, transform.rotation);
+                    T1_bullet = true;
+                }
             }
-        }
-        else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T1_bullet)
-        {
-            if (GameManager.Tutorial1 && !T1_bullet)
+            else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T2_bullet)
             {
-                Instantiate(bullet1, transform.position, transform.rotation);
-                T1_bullet = true;
+                if (GameManager.Tutorial2 && !T2_bullet && PlayerDefense.SpaceTime == 2)
+                {
+                    Instantiate(Spell2_audio, transform.position, transform.rotation);
+                    Instantiate(bullet2, transform.position, transform.rotation);
+                    T2_bullet = true;
+                }
             }
-        }
-        else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T2_bullet)
-        {
-            if (GameManager.Tutorial2 && !T2_bullet && PlayerDefense.SpaceTime == 2)
+            else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T3_bullet)
             {
-                Instantiate(bullet2, transform.position, transform.rotation);
-                T2_bullet = true;
-            }
-        }
-        else if (GameManager.Starting && !GameManager.Tutorial_Finish && !T3_bullet)
-        {
-            if (GameManager.Tutorial3 && !T3_bullet && PlayerDefense.SpaceTime == 3)
-            {
-                Instantiate(bullet3, transform.position, transform.rotation);
-                T3_bullet = true;
+                if (GameManager.Tutorial3 && !T3_bullet && PlayerDefense.SpaceTime == 3)
+                {
+                    Instantiate(Spell3_audio, transform.position, transform.rotation);
+                    Instantiate(bullet3, transform.position, transform.rotation);
+                    T3_bullet = true;
+                }
             }
         }
     }
@@ -77,6 +86,7 @@ public class BossAttack : MonoBehaviour
             RandomBullet = Random.Range(1, 4);
             if (RandomBullet == 1)
             {
+                Instantiate(Spell1_audio, transform.position, transform.rotation);
                 if (BulletCount < 2)
                 {
                     Instantiate(bullet1, transform.position, transform.rotation);
@@ -90,6 +100,7 @@ public class BossAttack : MonoBehaviour
             }
             else if (RandomBullet == 2)
             {
+                Instantiate(Spell2_audio, transform.position, transform.rotation);
                 if (BulletCount < 2)
                 {
                     Instantiate(bullet2, transform.position, transform.rotation);
@@ -103,6 +114,7 @@ public class BossAttack : MonoBehaviour
             }
             else if (RandomBullet == 3)
             {
+                Instantiate(Spell3_audio, transform.position, transform.rotation);
                 if (BulletCount < 2)
                 {
                     Instantiate(bullet3, transform.position, transform.rotation);
